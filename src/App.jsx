@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
 const TESTIMONIALS = [
-  { quote: "We had 200+ old leads just sitting there. FollowUp.ai recovered 31 of them in the first week. That's ₹3.1L in admissions we nearly lost.", name: 'Arvind Mehta', role: 'Director, Pinnacle IIT Academy', init: 'AM' },
-  { quote: "My clinic gets 80+ inquiries a week but the staff couldn't keep up. Now every inquiry gets a reply in under 2 minutes. Appointment rate went up 40%.", name: 'Dr. Priya Nair', role: 'Dermatologist, Glow Skin Clinic', init: 'PN' },
-  { quote: "I spent ₹20k on ads every month and was losing half the leads before they even got a callback. This fixed the entire bottom of my funnel.", name: 'Rohit Bansal', role: 'Founder, SkillEdge Training', init: 'RB' },
+  { quote: "We're onboarding our first pilot clients right now. You get hands-on attention, real results, and the lowest pricing we'll ever offer. No fluff — just show us your leads and we'll show you what we can recover.", name: 'Pilot Program', role: '3 spots open — first come first serve', init: '🚀' },
+  { quote: "No fake case studies. No made-up numbers. We set up your follow-up system, run it for 7 days, and hand you a report showing exactly how many leads replied and how many booked. That's the deal.", name: 'Our Promise', role: 'Honest. Straightforward. Results first.', init: '✊' },
+  { quote: "You're already spending money on ads, referrals, and word of mouth to get leads. We just make sure none of them fall through the cracks. That's literally all this is.", name: 'What We Do', role: 'Simple. Effective. No BS.', init: '💡' },
 ]
 
 const STEPS = [
@@ -15,31 +15,31 @@ const STEPS = [
 
 const PRICING = [
   {
-    name: 'Pilot', amount: '₹10,000', sub: '7-day trial · one-time',
+    name: 'Pilot', amount: '₹6,999', sub: '7-day trial · one-time',
     features: ['Up to 200 leads', 'AI follow-up sequences', 'WhatsApp sending', 'Dashboard access', 'Results report on Day 7'],
     cta: 'Start pilot', featured: false,
   },
   {
-    name: 'Growth', amount: '₹35,000', sub: 'per month · cancel anytime',
+    name: 'Growth', amount: '₹19,999', sub: 'per month · cancel anytime',
     features: ['Up to 1,000 leads/month', 'AI sequences for all niches', 'WhatsApp + email follow-up', 'Full analytics dashboard', 'Weekly revenue report', 'Dedicated setup call'],
     cta: 'Get started', featured: true, badge: 'Most popular',
   },
   {
-    name: 'Scale', amount: '₹65,000', sub: 'per month · multi-location',
+    name: 'Scale', amount: '₹39,999', sub: 'per month · multi-location',
     features: ['Unlimited leads', 'Multi-branch support', 'Custom AI personas per location', 'Priority support', 'Monthly strategy call', 'Razorpay payment integration'],
     cta: 'Talk to us', featured: false,
   },
 ]
 
 const TICKER_ITEMS = [
-  '40% more appointments', 'Zero lead slip-through', 'Replies in under 2 minutes',
-  '7-day follow-up sequences', 'AI-powered personalization', 'Coaching centers', 'Clinics',
-  'Training institutes', 'Real-time dashboard', '₹2L recovered per month',
+  'Stop losing leads', 'Reply in under 2 minutes', '7-day follow-up on autopilot',
+  'AI-powered personalization', 'Coaching centers', 'Clinics', 'Training institutes',
+  'Real-time dashboard', 'No extra staff needed', 'Works while you sleep',
 ]
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false)
-  const [formStep, setFormStep] = useState('form') // form | success
+  const [formStep, setFormStep] = useState('form')
   const [formData, setFormData] = useState({ name: '', phone: '', business: '', type: 'Coaching Center' })
   const [leads, setLeads] = useState(80)
   const [rate, setRate] = useState(30)
@@ -77,22 +77,20 @@ export default function App() {
 
   return (
     <>
-      {/* NAV */}
       <nav>
         <div className="nav-logo">followup<span>.ai</span></div>
         <div className="nav-links">
           <a href="#how">How it works</a>
-          <a href="#proof">Results</a>
+          <a href="#proof">Why us</a>
           <a href="#pricing">Pricing</a>
           <a href="#calculator">Calculator</a>
         </div>
         <button className="nav-cta" onClick={openModal}>Book free demo →</button>
       </nav>
 
-      {/* HERO */}
       <div style={{ paddingTop: 0 }}>
         <div className="hero">
-          <div className="hero-kicker">AI Lead Follow-Up · Made for India</div>
+          <div className="hero-kicker">AI Lead Follow-Up · Built for your lost leads</div>
           <h1>
             Your leads are<br />
             <em>leaving money</em><br />
@@ -103,12 +101,8 @@ export default function App() {
             FollowUp.ai sends the perfect follow-up — automatically, instantly, personally — so you convert more leads without hiring more staff.
           </p>
           <div className="hero-actions">
-            <button className="btn-primary" onClick={openModal}>
-              Book a free demo →
-            </button>
-            <a href="#calculator" className="btn-secondary">
-              Calculate your losses ↓
-            </a>
+            <button className="btn-primary" onClick={openModal}>Book a free demo →</button>
+            <a href="#calculator" className="btn-secondary">Calculate your losses ↓</a>
           </div>
           <div className="hero-stat-row">
             <div className="hero-stat">
@@ -131,7 +125,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* TICKER */}
       <div className="ticker-wrap">
         <div className="ticker">
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
@@ -143,7 +136,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* PROBLEM */}
       <div style={{ background: 'var(--bg)' }}>
         <div className="section">
           <div className="section-kicker">The problem</div>
@@ -174,7 +166,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* HOW IT WORKS */}
       <div id="how" className="how-bg">
         <div className="section">
           <div className="section-kicker">How it works</div>
@@ -197,7 +188,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* CALCULATOR */}
       <div id="calculator" style={{ background: 'var(--bg)' }}>
         <div className="section">
           <div className="section-kicker">Revenue calculator</div>
@@ -244,18 +234,16 @@ export default function App() {
         </div>
       </div>
 
-      {/* PROOF */}
       <div id="proof" className="how-bg">
         <div className="section">
-          <div className="section-kicker">Results</div>
+          <div className="section-kicker">Why us</div>
           <h2 className="section-title">
-            What clients say after<br />
-            <em>the first 7 days</em>
+            No fake reviews.<br />
+            <em>Just straight facts.</em>
           </h2>
           <div className="proof-grid">
             {TESTIMONIALS.map((t, i) => (
               <div className="proof-card" key={i}>
-                <div className="proof-stars">★★★★★</div>
                 <div className="proof-quote">"{t.quote}"</div>
                 <div className="proof-author">
                   <div className="proof-avatar">{t.init}</div>
@@ -270,7 +258,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* PRICING */}
       <div id="pricing" style={{ background: 'var(--bg)' }}>
         <div className="section">
           <div className="section-kicker">Pricing</div>
@@ -299,23 +286,22 @@ export default function App() {
         </div>
       </div>
 
-      {/* CTA */}
       <div className="cta-section">
         <div className="cta-glow" />
-        <h2>Every day you wait is<br /><em>another month of lost leads.</em></h2>
-        <p>Book a 20-minute demo. We'll show you exactly how many leads you're losing and how to recover them.</p>
+        <h2>Your leads aren't going to<br /><em>follow up themselves.</em></h2>
+        <p>Book a 20-min demo. We'll show you exactly what you're losing and how to fix it. No pitch, no pressure.</p>
         <button className="btn-primary" style={{ margin: '0 auto' }} onClick={openModal}>
-          Book free demo — no commitment →
+          Let's talk — it's free →
         </button>
       </div>
 
-      {/* FOOTER */}
       <footer>
-        <span>© 2026 followup.ai · Built for India · </span>
-        <span style={{ color: 'var(--green)' }}>hello@followup.ai</span>
+        <span>© 2026 followup.ai · for everyone losing leads · </span>
+        <span style={{ color: 'var(--green)' }}>sc62970@gmail.com</span>
+        <span> · </span>
+        <a href="https://wa.me/917096093039" style={{ color: 'var(--green)', textDecoration: 'none' }}>WhatsApp us</a>
       </footer>
 
-      {/* MODAL */}
       {modalOpen && (
         <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModalOpen(false)}>
           <div className="modal">
@@ -355,8 +341,8 @@ export default function App() {
             ) : (
               <div className="form-success">
                 <div className="form-success-icon">✅</div>
-                <h4>You're booked, {formData.name.split(' ')[0]}!</h4>
-                <p>We'll WhatsApp you within 2 hours to confirm your demo slot. Get ready to see exactly how many leads you've been losing.</p>
+                <h4>You're in, {formData.name.split(' ')[0]}!</h4>
+                <p>We'll WhatsApp you within 2 hours to lock in your demo slot. See you soon.</p>
                 <button className="btn-primary" style={{ margin: '1.5rem auto 0', justifyContent: 'center' }} onClick={() => setModalOpen(false)}>
                   Done
                 </button>
