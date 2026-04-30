@@ -47,9 +47,23 @@ export default function App() {
 
   const lostRevenue = Math.round(leads * (rate / 100) * (value / 1000)) * 1000
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     if (!formData.name || !formData.phone) return
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '105009e3-14f4-4ac7-bea1-e303a62a870d',
+          name: formData.name,
+          phone: formData.phone,
+          business: formData.business,
+          type: formData.type,
+          subject: 'New Demo Request — FollowUp.ai',
+        })
+      })
+    } catch(err) {}
     setFormStep('success')
   }
 
